@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Document</title>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="active">HOME</a>
+        <a href="/flights/new" class="active">ADD FLIGHT</a>
+        <a href="/flights/" class="active">ALL FLIGHTS</a>
+
+    </nav>
+    
+
+<section id="show-page">
+    <div>Airline: </div>
+    <div><%= flight.airline %></div>
+    <div>Airport: </div>
+    <div><%= flight.airport %></div>
+    <div>Flight Number: </div>
+    <div><%= flight.flightNo %></div>
+    <div>Departure: </div>
+    <div><%= flight.departs %></div>
+    
+
+
+    
+        <div >Destintations: </div>
+        <br>
+        <div>
+            <% flight.destinations.forEach(d=> { %>
+                <li>
+                    <%= d.airport %>
+                </li>
+                <li>
+                    <%= d.arrival %>
+                </li>
+                <% }) %>
+        </div>
+    
+
+        <form method="POST" action="/flights/<%=flight._id%>">
+        <div>
+            <select name="airport">
+                <option value="AUS">AUS</option>
+                <option value="DFW">DFW</option>
+                <option value="DEN">DEN</option>
+                <option value="LAX">LAX</option>
+                <option value="SAN">SAN</option>
+            </select>
+            <br>
+            <br>
+            <label>Arrival:</label>
+            <br>
+            <input type="datetime-local" name="arrival">
+            <input type="submit" value="Add Destination">
+        </div>
+        </form>
+    
+  
+
+    <br>
+    <div class="container">
+    <form id="ticket-form" method="GET" action="/tickets/<%=flight._id%>/new">
+        <button type="submit">New Ticket</button>
+    </form>
+    <table>
+        <thead>
+            <th>Seat Number</th>
+            <th>Price</th>
+        </thead>
+        <tbody>
+    
+            <% tickets.forEach(function(t){ %>
+                <tr>
+                    <td><%= t.seat %></td>
+                    <td><%= t.price %></td>
+                </tr>
+            <% }) %>
+
+        </tbody>
+    </table>
+    </div>
+
+
+
+</section>
+
+        
+</body>
+</html>
+
+

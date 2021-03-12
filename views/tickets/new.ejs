@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Document</title>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="active">HOME</a>
+        <a href="/flights/new" class="active">ADD FLIGHT</a>
+        <a href="/flights/" class="active">ALL FLIGHTS</a>
+         
+    </nav>
+    
+
+    <form action="/tickets/<%=flightId%>" method="POST">
+        <h3>Purchase Ticket</h3>
+        <label>Seat:</label>
+        <input type="text" name="seat" required pattern="[A-F][1-9]\d?" placeholder="Enter Seat">
+        <label>Price:</label>
+        <input type="number" name="price" placeholder="Enter Price">
+        
+    
+        <input type="submit" value="Add Ticket">
+      </form>
+
+     
+
+    
+
+        
+</body>
+</html>
+
+

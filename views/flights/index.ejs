@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <title>Mongoose Flights</title>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="active">HOME</a>
+        <a href="/flights/new" class="active">ADD FLIGHT</a>
+        <a href="/flights/" class="active">ALL FLIGHTS</a>
+         
+</nav>
+  
+  <h1>Flight List</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Airline</th>
+        <th>Airport</th>
+        <th>Flight Num</th>
+        <th>Departs</th>
+        <th>Now Flying</th>
+      </tr>
+    </thead>
+    <tbody>
+        <!-- Write the line of EJS to iterate over movies using forEach -->
+        <% flights.forEach(function(f){ %>
+          <tr> 
+            <td><%= f.airline %></td>
+            <td><%= f.airport %></td>
+            <td><%= f.flightNo %></td>
+            <!-- get rid of excess -->
+            <td><%= f.departs %></td>
+            <!-- finish the ternary expression to display
+                         'Yes' or 'Nope' --> 
+            <!-- <td><%= f.nowFlying ? 'YES' : 'NO' %></td> -->
+            <td><a href="/flights/<%= f._id %>">Details</a></td>
+          </tr>
+          <% }) %>
+        <!-- Close the forEach using EJS here -->
+      </tbody>
+  </table>
+</body>
+</html>
